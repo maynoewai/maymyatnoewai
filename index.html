@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maymyatnoewai - Aspiring Project Manager</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        :root {
+            --primary: #8B5CF6;
+            --primary-dark: #7C3AED;
+            --secondary: #F3E8FF;
+            --accent: #C084FC;
+            --text: #ffffff;
+            --bg: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        header {
+            background: linear-gradient(
+                135deg,
+                #8B5CF6,    /* Purple */
+                #EC4899,    /* Pink */
+                #6D28D9,    /* Deep Purple */
+                #3B82F6,    /* Blue */
+                #9333EA,    /* Bright Purple */
+                #F472B6,    /* Light Pink */
+                #4F46E5,    /* Indigo */
+                #7C3AED     /* Violet */
+            );
+            background-size: 400% 400%;
+            color: var(--text);
+            padding: 6rem 0 4rem;
+            text-align: center;
+            overflow: hidden;
+            animation: gradientFlow 20s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--bg);
+            margin-bottom: 2rem;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: var(--secondary);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(255,255,255,0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .skill-card {
+            background: var(--bg);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 2rem;
+            background: var(--bg);
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(255,255,255,0.1);
+        }
+
+        /* Contact Links */
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: var(--text);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .skills-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="https://i.ibb.co/Q8cJnMC/photo-6176704090738900785-y.jpg" alt="Maymyatnoewai" class="profile-img">
+        <h1>Maymyatnoewai</h1>
+        <p class="tagline">Aspiring Project Manager in IT and Computer Science</p>
+        <p>Driven to lead and innovate in the tech world</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about" data-aos="fade-up">
+      <div class="container">
+    <h2 class="section-title">About Me</h2>
+    <p>As an aspiring Project Manager in the IT and Computer Science field, I bring a unique combination of technical knowledge and leadership skills to each project I undertake. My journey began with a solid foundation in computer science, where I developed a keen interest in programming and problem-solving. Over time, my experiences working in both academic and real-world settings ignited a passion for guiding teams and projects toward success through strategic planning and clear communication.</p>
+     <br>
+      <br>
+
+    <p>In my role as a <strong>Project Associate</strong>, I gained firsthand experience managing timelines, coordinating between stakeholders, and ensuring that project objectives were met. Additionally, as the <strong>Lead for a Student Assessment Project</strong> in university, I honed my leadership skills by overseeing a team, setting goals, and helping my peers stay aligned with project deliverables. These experiences taught me how to effectively bridge the gap between technical teams and business objectives, delivering outcomes that not only meet but exceed expectations.</p>
+     <br> <br>
+
+    <p><strong>Technical Expertise:</strong> With a strong foundation in full-stack development, I’m proficient in the <strong>MERN stack (MongoDB, Express.js, React, and Node.js)</strong>. My technical knowledge goes beyond theory; I’ve built real-world applications, including a to-do list application, a geolocation-based app, and various APIs that utilize the React Context API for state management. This hands-on experience gives me unique insight into the development process, allowing me to empathize with technical teams and contribute to a smoother, more efficient workflow.</p>
+     <br> <br>
+
+    <p><strong>Certifications and Continuous Learning:</strong> I am a firm believer in the value of continuous learning and have completed several certifications to strengthen my project management and technical skills. Through <strong>Udemy certifications in Project Management and Agile Methodologies</strong>, I have developed a deep understanding of Agile principles, which I am particularly drawn to for their flexibility and team-centric approach. Additionally, my certification in the <strong>MERN stack</strong> has refined my technical expertise and helped me create structured, scalable applications.</p>
+     <br> <br>
+
+    <p><strong>Why Agile?</strong> I am especially passionate about Agile methodologies because of their dynamic, iterative nature and their focus on collaboration and adaptability. I’ve seen firsthand how Agile enables teams to respond to changes quickly, maintain transparency, and keep stakeholders engaged throughout the development process. My goal is to pursue a career in project management with a strong focus on Agile, guiding teams to deliver high-quality projects through incremental improvements and client feedback.</p>
+     <br> <br>
+
+    <p><strong>Leadership and Management Skills:</strong> My management skills have been a defining part of my academic and professional journey. During my time at university and school, I took on leadership roles that involved coordinating team efforts, ensuring tasks were completed on time, and fostering a supportive, goal-oriented environment. I shine in settings where I can use my organizational abilities and communication skills to help others stay focused and motivated, ensuring that each team member understands their role and feels empowered to contribute.</p>
+     <br> <br>
+
+    <p><strong>My Vision:</strong> Looking forward, my vision as a project manager is to be a bridge between technical teams and business stakeholders, translating complex technical details into actionable business insights. I am committed to driving project success through effective communication, strategic planning, and a results-oriented mindset. By blending my technical insight, project management skills, and passion for Agile methodologies, I aim to make a meaningful impact in every project I lead.</p>
+</div>
+
+    </section>
+
+ <section id="skills" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Project Management</h3>
+                <p>Proficient in Agile, Scrum, and Waterfall methodologies. Skilled in project scheduling, task prioritization, and effective communication across teams.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Technical Skills</h3>
+                <p>Experienced with MERN stack (MongoDB, Express.js, React, Node.js), RESTful API development, and basic cloud computing principles.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Tools</h3>
+                <p>JIRA, Trello, MS Office, Git, and project tracking platforms for organized and efficient workflows.</p>
+            </div>
+            <div class="skill-card">
+                <h3>Soft Skills</h3>
+                <p>Strong leadership, effective communication, innovative problem-solving, and adaptability in fast-paced environments.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Team Collaboration Platform</h3>
+                    <p>Led the development of an internal team collaboration platform, improving communication and task tracking across departments. Utilized Agile principles to ensure iterative progress and timely feedback integration.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Cloud Database Migration</h3>
+                    <p>Oversaw a project migrating legacy databases to cloud infrastructure, achieving improved data accessibility and reducing operational costs. Managed risks and streamlined the data transfer process.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Task Management App</h3>
+                    <p>Built a to-do list application using React and MongoDB. Integrated features for task prioritization, due dates, and notifications to help users stay organized.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="certifications" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Certifications</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>2023</h3>
+                <p><strong>Project Management Professional (PMP) Certification - In Progress</strong></p>
+            </div>
+            <div class="timeline-item">
+                <h3>2023</h3>
+                <p><strong>MERN Stack Development Certification</strong> - Udemy</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2022</h3>
+                <p><strong>Bachelor’s Degree in Computer Science</strong> - High National Institute</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2021</h3>
+                <p><strong>Agile Scrum Master Certification</strong> - Udemy</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="experience" data-aos="fade-up">
+    <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <h3>2023</h3>
+                <p><strong>Project Associate</strong> - XYZ Tech</p>
+                <p>Assisted in managing software development projects, coordinating between cross-functional teams, and ensuring smooth project flow. Applied Agile practices to streamline tasks and enhance team productivity.</p>
+            </div>
+            <div class="timeline-item">
+                <h3>2022</h3>
+                <p><strong>Software Development Intern</strong> - ABC Solutions</p>
+                <p>Gained experience in software development and team collaboration, contributing to projects using the MERN stack. Developed foundational skills in project planning and requirement analysis.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-links">
+                <a href="www.linkedin.com/in/may-myat-noe-wai" class="contact-link" target="_blank">LinkedIn</a>
+                <a href="https://github.com/maynoewai" class="contact-link" target="_blank">GitHub</a>
+                <a href="mailto:your.email@example.com" class="contact-link">Email</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ by Maymyatnoewai</p>
+    </footer>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 3D effect for header
+        const header = document.querySelector('header');
+        document.addEventListener('mousemove', (e) => {
+            const { clientX, clientY } = e;
+            const x = (clientX / window.innerWidth) * 20 - 10;
+            const y = (clientY / window.innerHeight) * 20 - 10;
+            header.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+        });
+
+        // Reset header position on mouse leave
+        header.addEventListener('mouseleave', () => {
+            header.style.transform = 'rotateY(0deg) rotateX(0deg)';
+        });
+    </script>
+</body>
+</html>
