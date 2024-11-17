@@ -216,17 +216,29 @@
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
+@media (max-width: 768px) {
+    nav {
+        overflow-x: auto;  /* Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch;  /* Smooth scrolling on iOS */
+    }
+    
+    nav ul {
+        flex-wrap: nowrap;  /* Prevent wrapping to new lines */
+        justify-content: flex-start;  /* Align items to start */
+        padding: 0 1rem;
+        min-width: min-content;  /* Ensure all items are visible */
+        gap: 1.5rem;  /* Slightly reduced gap for better fit */
+    }
+    
+    nav a {
+        white-space: nowrap;  /* Prevent text wrapping */
+    }
 
-            .skills-grid, .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+    /* Remove the column direction change */
+    .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
     </style>
 </head>
 <body>
